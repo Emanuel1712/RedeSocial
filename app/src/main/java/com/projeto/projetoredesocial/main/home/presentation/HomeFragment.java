@@ -15,10 +15,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.projeto.projetoredesocial.R;
+import com.projeto.projetoredesocial.main.presentation.MainView;
 
 public class HomeFragment extends Fragment {
 
+    private MainView mainView;
+
+    public static HomeFragment newInstance(MainView mainView){
+        HomeFragment homeFragment = new HomeFragment();
+        homeFragment.setMainView(mainView);
+        return homeFragment;
+    }
+
     public HomeFragment(){}
+
+    private void setMainView(MainView mainView){
+        this.mainView = mainView;
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

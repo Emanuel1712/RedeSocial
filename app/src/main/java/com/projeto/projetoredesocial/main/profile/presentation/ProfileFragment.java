@@ -15,10 +15,31 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.projeto.projetoredesocial.R;
+import com.projeto.projetoredesocial.common.view.AbstractActivity;
+import com.projeto.projetoredesocial.common.view.AbstractFragment;
+import com.projeto.projetoredesocial.main.home.presentation.HomeFragment;
+import com.projeto.projetoredesocial.main.presentation.MainView;
 
-public class ProfileFragment extends Fragment {
+import butterknife.BindView;
+
+public class ProfileFragment extends AbstractFragment<ProfilePresenter> {
+
+    private MainView mainView;
+
+    @BindView(R.id.profile_recycler)
+    RecyclerView recyclerView;
+
+    public static ProfileFragment newInstance(MainView mainView){
+        ProfileFragment profileFragment = new ProfileFragment();
+        profileFragment.setMainView(mainView);
+        return profileFragment;
+    }
 
     public ProfileFragment(){}
+
+    private void setMainView(MainView mainView){
+        this.mainView = mainView;
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -32,13 +53,17 @@ public class ProfileFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // TODO: 27/05/20 app:layout_scrollFlags="scroll" at toolbar
-        View view = inflater.inflate(R.layout.fragment_main_profile, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        RecyclerView recyclerView = view.findViewById(R.id.profile_recycler);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(new PostAdapter());
 
         return view;
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_main_profile;
     }
 
     @Override
