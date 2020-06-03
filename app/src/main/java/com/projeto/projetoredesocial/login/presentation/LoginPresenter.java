@@ -31,7 +31,7 @@ class LoginPresenter implements Presenter<UserAuth> {
     }
 
     @Override
-    public void onSucess(UserAuth userAuth) {
+    public void onSuccess(UserAuth userAuth) {
         view.onUserLogged();
     }
 

@@ -11,7 +11,7 @@ public class RegisterLocalDataSouce implements RegisterDataSource{
     @Override
     public void CreateUser(String name, String email, String password, Presenter presenter) {
         Database.getInstance().createUser(name, email, password)
-                .addOnSuccessListener((Database.OnSuccessListener<UserAuth>) presenter::onSucess)
+                .addOnSuccessListener((Database.OnSuccessListener<UserAuth>) presenter::onSuccess)
                 .addOnFailureListener(e -> presenter.onError(e.getMessage()))
                 .addOnCompleteListener(presenter::onComplete);
     }
@@ -20,7 +20,7 @@ public class RegisterLocalDataSouce implements RegisterDataSource{
     public void addPhoto(Uri uri, Presenter presenter) {
         Database db = Database.getInstance();
         db.addPhoto(db.getUser().getUUID(), uri)
-                .addOnSuccessListener((Database.OnSuccessListener<Boolean>) presenter::onSucess);
+                .addOnSuccessListener((Database.OnSuccessListener<Boolean>) presenter::onSuccess);
 
     }
 }

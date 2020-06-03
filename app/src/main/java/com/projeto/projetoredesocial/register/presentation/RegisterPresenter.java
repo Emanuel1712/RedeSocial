@@ -92,7 +92,7 @@ public class RegisterPresenter implements Presenter<UserAuth> {
         registerView.onUserCreated();
     }
     @Override
-    public void onSucess(UserAuth response) {
+    public void onSuccess(UserAuth response) {
         registerView.showNextView(ResgisterSteps.WELCOME);
     }
 
@@ -109,7 +109,7 @@ public class RegisterPresenter implements Presenter<UserAuth> {
     private class UpdatePhotoCallback implements Presenter<Boolean>{
 
         @Override
-        public void onSucess(Boolean response) {
+        public void onSuccess(Boolean response) {
             registerView.onUserCreated();
         }
 

@@ -8,7 +8,7 @@ public class LoginLocalDataSource implements LoginDataSource {
     @Override
     public void login(String email, String senha, Presenter presenter) {
         Database.getInstance().login(email,senha)
-                .addOnSuccessListener((Database.OnSuccessListener<UserAuth>) response -> presenter.onSucess(response))
+                .addOnSuccessListener((Database.OnSuccessListener<UserAuth>) response -> presenter.onSuccess(response))
                 .addOnFailureListener(e -> presenter.onError(e.getMessage()))
                 .addOnCompleteListener(() -> presenter.onComplete());
     }
