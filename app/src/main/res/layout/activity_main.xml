@@ -42,14 +42,11 @@
             android:background="@android:color/white"
             tools:content=".main.presentation.MainActivity">
 
-            <fragment
+            <FrameLayout
                 android:id="@+id/main_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="com.projeto.projetoredesocial.main.home.presentation.HomeFragment"
-                tools:layout="@layout/fragment_main_home"
-                android:layout_above="@+id/main_bottom_nav"
-                />
+                tools:layout="@layout/fragment_main_gallery"/>
 
         </LinearLayout>
 
