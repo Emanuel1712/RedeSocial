@@ -5,6 +5,8 @@ import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.projeto.projetoredesocial.R;
+import com.projeto.projetoredesocial.common.model.Database;
+import com.projeto.projetoredesocial.common.model.UserAuth;
 import com.projeto.projetoredesocial.common.view.AbstractActivity;
 import com.projeto.projetoredesocial.common.component.LoadingButton;
 import com.projeto.projetoredesocial.login.datasource.LoginDataSource;
@@ -31,6 +33,10 @@ public class LoginActivity extends AbstractActivity implements LoginView{
         super.onCreate(savedInstanceState);
 
         setStatusBarDark();
+
+        UserAuth user = Database.getInstance().getUser();
+        if( user != null)
+            onUserLogged();
     }
 
     @Override
@@ -64,6 +70,7 @@ public class LoginActivity extends AbstractActivity implements LoginView{
     @Override
     public void onUserLogged() {
         MainActivity.launch(this);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     @OnClick(R.id.login_button_enter)

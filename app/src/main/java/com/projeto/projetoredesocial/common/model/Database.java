@@ -33,7 +33,28 @@ public class Database {
     public static Database getInstance(){
         if(INSTANCE == null)
            INSTANCE = new Database();
+            INSTANCE.init();
         return INSTANCE;
+    }
+
+    public void init() {
+        String email = "user1@gmail.com";
+        String password = "1234";
+        String name = "user1";
+
+        UserAuth userAuth = new UserAuth();
+        userAuth.setEmail(email);
+        userAuth.setPassword(password);
+
+        usersAuth.add(userAuth);
+
+        User user = new User();
+        user.setEmail(email);
+        user.setName(name);
+        user.getUuid(userAuth.getUUID());
+
+        users.add(user);
+        this.userAuth = userAuth;
     }
 
     public <T> Database addOnSuccessListener(OnSuccessListener<T> listener){
@@ -53,12 +74,12 @@ public class Database {
         timeout(() ->{
             Set<User> users = Database.users;
             for (User user :users) {
-                if(user.getUuid().equals(uuid)){
+                if(user.getUuid(userAuth.getUUID()).equals(uuid)){
                     user.setUri(uri);
                 }
             }
             storages.add(uri);
-            onSuccessListener.OnSuccess(true);
+            onSuccessListener.onSuccess(true);
         });
         return this;
     }
@@ -79,12 +100,15 @@ public class Database {
             boolean added = users.add(user);
             if(added){
                 this.userAuth = userAuth;
-                onSuccessListener.OnSuccess(userAuth);
+                if(onSuccessListener != null)
+                onSuccessListener.onSuccess(userAuth);
             }else{
                 this.userAuth = null;
-                onFailureListener.OnFailure(new IllegalAccessException("Usuário já existe"));
+                if(onFailureListener != null)
+                onFailureListener.onFailure(new IllegalAccessException("Usuário já existe"));
             }
-            onCompleteListener.OnComplete();
+            if(onCompleteListener != null)
+            onCompleteListener.onComplete();
         });
         return this;
     }
@@ -97,12 +121,12 @@ public class Database {
 
             if(usersAuth.contains(userAuth)){
                 this.userAuth = userAuth;
-                onSuccessListener.OnSuccess(userAuth);
+                onSuccessListener.onSuccess(userAuth);
             }else {
                 this.userAuth = null;
-                onFailureListener.OnFailure(new IllegalArgumentException("Usuário não encontrado"));
+                onFailureListener.onFailure(new IllegalArgumentException("Usuário não encontrado"));
             }
-            onCompleteListener.OnComplete();
+            onCompleteListener.onComplete();
         });
 
         return this;
@@ -117,12 +141,12 @@ public class Database {
     }
 
     public interface OnSuccessListener<T>{
-        void OnSuccess(T response);
+        void onSuccess(T response);
     }
     public interface OnFailureListener<T>{
-        void OnFailure(Exception e);
+        void onFailure(Exception e);
     }
     public interface OnCompleteListener<T>{
-        void OnComplete();
+        void onComplete();
     }
 }

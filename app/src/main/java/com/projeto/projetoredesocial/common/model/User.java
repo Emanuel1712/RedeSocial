@@ -30,8 +30,8 @@ public class User {
         this.name = name;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getUuid(String uuid) {
+        return this.uuid;
     }
 
     public void setUuid(String uuid) {
