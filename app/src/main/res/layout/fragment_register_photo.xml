@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register.presentation.RegisterActivity"
+    >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/register_camera_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:src="@drawable/photo_icon"
+        android:layout_gravity="center"
+        app:civ_border_width="0dp"
+        app:civ_border_color="@color/purple"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        style="@style/redeTextViewBase"
+        android:text="@string/photo_register_title"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        style="@style/redeTextViewBase"
+        android:text="@string/photo_register_subtitle"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:textAlignment="center"/>
+
+    <com.projeto.projetoredesocial.common.component.LoadingButton
+        android:id="@+id/register_button_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text_rede="@string/add_photo"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/redeFormButton.Link"
+        android:id="@+id/register_button_jump"
+        android:text="@string/jump"
+        android:textColor="@color/purple"
+        android:layout_gravity="center"
+        android:layout_marginBottom="36dp"
+        />
+
+</LinearLayout>

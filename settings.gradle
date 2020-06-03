@@ -1,0 +1,2 @@
+rootProject.name='projetoRedeSocial'
+include ':app'

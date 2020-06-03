@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/photo_icon"
+        android:layout_gravity="center"
+        android:scaleX=".5"
+        android:scaleY=".5"/>
+
+  <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_edit_text_email_input"
+        style="@style/redeFormEditTextInput"
+        app:errorTextAppearance="@style/redeFormEditTextInput"
+        app:hintEnabled="false">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/register_edit_text_email"
+            style="@style/redeFormEditText1"
+            android:hint="@string/email"
+            android:textColor="@color/purple"
+            android:inputType="textEmailAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.projeto.projetoredesocial.common.component.LoadingButton
+        android:id="@+id/register_button_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text_rede="@string/next"/>
+    
+    <View
+        android:layout_marginTop="80dp"
+        android:id="@+id/divider_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/register_text_view_email_login"
+        style="@style/redeTextViewBase"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="@string/already_has_account"/>
+
+</LinearLayout>

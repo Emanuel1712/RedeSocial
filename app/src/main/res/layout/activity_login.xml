@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.presentation.LoginActivity"
+    android:background="@drawable/background_degrade">
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/login_image_view_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_marginBottom="48dp"
+            android:paddingStart="80dp"
+            android:paddingEnd="80dp"
+            android:src="@drawable/rede_logo_black" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_edit_text_email_input"
+            style="@style/redeFormEditTextInput"
+            app:errorTextAppearance="@style/redeFormEditTextError"
+            app:hintEnabled="false">
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/login_edit_text_email"
+        style="@style/redeFormEditText"
+        android:hint="@string/email"
+        android:textColor="@android:color/white"
+        android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_edit_text_password_input"
+            style="@style/redeFormEditTextInput"
+            app:errorTextAppearance="@style/redeFormEditTextError"
+            app:hintEnabled="false">
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/login_edit_text_password"
+        style="@style/redeFormEditText"
+        android:hint="@string/password"
+        android:textColor="@android:color/white"
+        android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.projeto.projetoredesocial.common.component.LoadingButton
+        android:id="@+id/login_button_enter"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:text_rede="@string/enter"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp">
+
+            <View
+                android:id="@+id/view"
+                style="@style/FormContainer"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/purple"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                style="@style/redeTextViewBase"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:padding="8dp"
+                android:text="@string/or"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/view2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/view2"
+                style="@style/FormContainer"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/purple"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_button_enter_facebook"
+        style="@style/redeFormButton.Link"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/facebook_logo"
+        android:drawablePadding="8dp"
+        android:text="@string/enter_with_facebook"/>
+
+
+    
+    <View
+        android:id="@+id/divider_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/purple"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:textColor="@color/purple"
+        android:id="@+id/login_text_view_register"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        style="@style/redeTextViewBase"
+        android:padding="24dp"
+        android:text="@string/does_not_have_account"/>
+
+     </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

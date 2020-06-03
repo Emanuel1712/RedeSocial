@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/gray</color>
+    <color name="colorPrimaryDark">@color/grayDarker</color>
+    <color name="colorAccent">@android:color/black</color>
+
+    <color name="grayBorder">#DBDBDB</color>
+    <color name="gray">#FAFAFA</color>
+    <color name="grayDarker">#EFEFEF</color>
+
+    <color name="blueDisable">#C3E0FA</color>
+    <color name="blueEnable">#3897F0</color>
+    <color name="grayText">#999999</color>
+
+    <color name="red">#FF0000</color>
+    <color name="purple">#8904B0</color>
+    <color name="purpleclaro">#dfd5ea</color>
+</resources>

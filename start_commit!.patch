@@ -1,0 +1,96 @@
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision 2884f9efc9ae27a5ab6265227b6ddbf9ed091a5d)
++++ app/src/main/res/values/strings.xml	(date 1590532249000)
+@@ -1,3 +1,4 @@
+ <resources>
+     <string name="app_name">projetoRedeSocial</string>
++    <string name="email">Email</string>
+ </resources>
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_login.xml	(revision 2884f9efc9ae27a5ab6265227b6ddbf9ed091a5d)
++++ app/src/main/res/layout/activity_login.xml	(date 1590532397000)
+@@ -4,7 +4,21 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:orientation="vertical"
+     tools:context=".login.presentation.LoginActivity">
+ 
++    <androidx.appcompat.widget.AppCompatImageView
++        android:id="@+id/login_image_view_logo"
++        android:layout_width="wrap_content"
++        android:paddingStart="80dp"
++        android:paddingEnd="80dp"
++        android:layout_marginBottom="48dp"
++        android:layout_height="60dp"
++        android:src = "@drawable/instagram_logo_black"/>
+ 
++    <androidx.appcompat.widget.AppCompatEditText
++        style="@style/redeFormEditText"
++        android:hint="@string/email"
++        android:inputType="textEmailAddress"
++      />
+ </LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/values/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/styles.xml	(revision 2884f9efc9ae27a5ab6265227b6ddbf9ed091a5d)
++++ app/src/main/res/values/styles.xml	(date 1590532724000)
+@@ -8,4 +8,14 @@
+         <item name="colorAccent">@color/colorAccent</item>
+     </style>
+ 
++    <style name="FormContainer">
++        <item name="android:layout_marginStart">36dp</item>
++        <item name="android:layout_marginEnd">36dp</item>
++    </style>
++
++    <style name="redeFormEditText" parent="FormContainer">
++        <item name="android:layout_width">match_parent</item>
++        <item name="android:layout_height">wrap_content</item>
++        <item name="android:background">@drawable/edit_text_background</item>
++    </style>
+ </resources>
+Index: app/src/main/res/drawable/edit_text_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/edit_text_background.xml	(date 1590532670000)
++++ app/src/main/res/drawable/edit_text_background.xml	(date 1590532670000)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++
++    <stroke android:color="@color/grayDarker" android:width="1dp"/>
++    <solid android:color="@color/gray"/>
++    <corners android:radius="4dp"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_register_email.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_register_email.xml	(revision 2884f9efc9ae27a5ab6265227b6ddbf9ed091a5d)
++++ app/src/main/res/layout/fragment_register_email.xml	(date 1590532904000)
+@@ -11,6 +11,6 @@
+     <androidx.appcompat.widget.AppCompatImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:src="@drawable/icone_mulher"/>
++        android:src="@drawable/photo_icon"/>
+ 
+ </LinearLayout>
+\ No newline at end of file
