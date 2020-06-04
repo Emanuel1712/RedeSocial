@@ -3,20 +3,19 @@ package com.projeto.projetoredesocial.common.model;
 import android.net.Uri;
 import android.os.Handler;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Database {
 
-    private static Database INSTANCE;
     private static Set<UserAuth> usersAuth;
     private static Set<User> users;
     private static Set<Uri> storages;
+    private static HashMap<String, HashSet<Post>> posts;
 
-    private OnSuccessListener onSuccessListener;
-    private OnFailureListener onFailureListener;
-    private OnCompleteListener onCompleteListener;
-    private UserAuth userAuth;
+    private static Database INSTANCE;
 
     static {
         usersAuth = new HashSet<>();
@@ -29,6 +28,12 @@ public class Database {
         //usersAuth.add(new UserAuth("user5@gmail.com","12345678"));
         //usersAuth.add(new UserAuth("user6@gmail.com","123456789"));
     }
+
+    private OnSuccessListener onSuccessListener;
+    private OnFailureListener onFailureListener;
+    private OnCompleteListener onCompleteListener;
+    private UserAuth userAuth;
+
 
     public static Database getInstance(){
         if(INSTANCE == null)
@@ -51,7 +56,7 @@ public class Database {
         User user = new User();
         user.setEmail(email);
         user.setName(name);
-        user.getUuid(userAuth.getUUID());
+        user.setUuid(userAuth.getUUID());
 
         users.add(user);
         this.userAuth = userAuth;
@@ -70,11 +75,50 @@ public class Database {
         return this;
     }
 
+    public Database findPosts(String uuid) {
+        timeout(() ->{
+            HashMap<String, HashSet<Post>> posts = Database.posts;
+            HashSet<Post> res = posts.get(uuid);
+
+            if( res == null)
+                res = new HashSet<>();
+
+            if(onSuccessListener != null)
+                onSuccessListener.onSuccess(new ArrayList<>(res));
+
+            if(onCompleteListener != null)
+                onCompleteListener.onComplete();
+        });
+        return this;
+    }
+
+    public Database findUser(String uuid) {
+        timeout(() ->{
+            Set<User> users = Database.users;
+            User res = null;
+            for(User user : users) {
+                if(user.getUuid().equals(uuid)) {
+                    res = user;
+                    break;
+                }
+            }
+                if(onSuccessListener != null && res != null) {
+                    onSuccessListener.onSuccess(res);
+                } else if(onFailureListener != null) {
+                    onFailureListener.onFailure(new IllegalArgumentException("Usuario nao encontrado"));
+                }
+                if(onCompleteListener != null)
+                    onCompleteListener.onComplete();
+
+        });
+        return this;
+    }
+
     public Database addPhoto(String uuid, Uri uri){
         timeout(() ->{
             Set<User> users = Database.users;
             for (User user :users) {
-                if(user.getUuid(userAuth.getUUID()).equals(uuid)){
+                if(user.getUuid().equals(uuid)){
                     user.setUri(uri);
                 }
             }

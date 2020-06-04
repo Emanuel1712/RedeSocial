@@ -13,6 +13,7 @@ public class User {
     private String email;
     private String name;
     private Uri uri;
+    private int following, followers, posts;
 
     public String getEmail() {
         return email;
@@ -30,8 +31,8 @@ public class User {
         this.name = name;
     }
 
-    public String getUuid(String uuid) {
-        return this.uuid;
+    public String getUuid() {
+        return uuid;
     }
 
     public void setUuid(String uuid) {
@@ -44,6 +45,30 @@ public class User {
 
     public void setUri(Uri uri) {
         this.uri = uri;
+    }
+
+    public int getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(int following) {
+        this.following = following;
+    }
+
+    public int getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(int followers) {
+        this.followers = followers;
+    }
+
+    public int getPosts() {
+        return posts;
+    }
+
+    public void setPosts(int posts) {
+        this.posts = posts;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -61,4 +86,6 @@ public class User {
     public int hashCode() {
         return Objects.hash(email, name);
     }
+
+
 }
